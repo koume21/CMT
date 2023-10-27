@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>共有</title>
+    <link rel="stylesheet" href="/css/share.css">
+</head>
+<body>
+    <aside id="sub">
+        <div class="doday">
+        </div>
+        <h2 class="heading"><span><a href="/index">ホーム</a></span></h2>
+        <h2 class="heading"><span><a href="/share">共有</a></span></h2>
+        <div class="side_shareRoom">
+            <ul>
+                <% team.forEach((room) => { %>
+                    <li id="<%= room.room %>"><%= room.room %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <h2 class="heading"><span>個人</span></h2>
+        <ul>
+          <li><a href="/task">タスク</a></li>
+          <li><a href="/todo">TODO</a></li>
+          <li><a href="/memo">MEMO</a></li>
+        </ul>
+        <a onclick="logout()">ログアウト</a>
+    </aside>
+    <div class="share">
+        <div class="between">
+            <div class="team-add">
+                <p class="team-title">チーム追加</p>
+                <form action="/share/team" method="post">
+                    <p>チーム名</p>
+                    <input type="text" name="teamName">
+                    <p>チームID</p>
+                    <input type="text" name="teamID">
+                    <p>パスワード</p>
+                    <input type="password" name="teamPW">
+                    <input type="submit" value="追加">
+                </form>
+            </div>
+            <div class="team-join">
+                <p class="team-title">チーム参加</p>
+                <form action="/share/join" method="post">
+                    <p>チームID</p>
+                    <input type="text" name="teamID">
+                    <p>パスワード</p>
+                    <input type="password" name="teamPW">
+                    <input type="submit" value="参加">
+                </form>
+            </div>
+        </div>
+        <div class="team-view">
+            <p id="team-itiran">チーム一覧</p>
+            <% rooms.forEach((room) => { %>
+                <div class="project-view">
+                    <p class="project-select" id="<%= room.room_id %>" ondblclick="projectClick(this.id)"><%= room.roomName %></p>
+                </div>
+                
+            <% }); %>
+        </div>
+    </div>
+    <script src="/js/share.js"></script>
+</body>
+</html>

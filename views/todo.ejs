@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="icon" type="image/png" href="/img/calendar-icon.png">
+    <link rel="stylesheet" href="/css/todo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <aside id="sub">
+        <div class="doday">
+        </div>
+        <h2 class="heading"><span><a href="/index">ホーム</a></span></h2>
+        <h2 class="heading"><span><a href="/share">共有</a></span></h2>
+        <div class="side_shareRoom">
+            <ul>
+                <% room.forEach((room) => { %>
+                    <li id="<%= room.room %>"><%= room.room %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <h2 class="heading"><span>個人</span></h2>
+        <ul>
+          <li><a href="/task">タスク</a></li>
+          <li><a href="/todo">TODO</a></li>
+          <li><a href="/memo">MEMO</a></li>
+        </ul>
+        <a onclick="logout()">ログアウト</a>
+    </aside>
+    <div class="main">
+        <div class="flex">
+    
+            <div class="wrapper">
+                <!-- xxxx年xx月を表示 -->
+                
+                
+                <div class="main_claender">
+                    <!-- ボタンクリックで月移動 -->
+                    <div id="next-prev-button">
+                        <button id="prev" onclick="prev()">‹</button>
+                        <h1 id="head_draw"></h1>
+                        <button id="next" onclick="next()">›</button>
+                    </div>
+                
+                    <!-- カレンダー -->
+                    <div id="calendar"></div>
+                </div>
+                    
+        
+            </div>
+            
+            <div class="input_place">
+                <div class="select_place">
+                    <div class="selectDay">
+                        <h2 id="day_h2"></h2>
+                        <p>+</p>
+                    </div>
+                    <form>
+                        <%# console.log(text_todo); %>
+                        <div class="input_todo">
+                            <input type="text" name="todo" id="todoValue">
+                            <p id="todoAdd">+</p>
+                            <p id="save">save</p>
+                        </div>
+                    </form>
+                    <div class="List">
+                        <h2>タイトル</h2>
+                        <div class="TodoList" id="TodoList">                       
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("load",function() {
+            showProcess(today,calendar);
+        });
+    </script>
+    <script src="/js/todo.js"></script>
+
+</body>
+</html>

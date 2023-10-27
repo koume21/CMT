@@ -1,0 +1,138 @@
+html,body {
+    margin:0px;
+    padding:0px;
+    height:100%;
+    
+}
+.share {
+    width:85%;
+    height:100%;
+    margin-left:15%;
+    box-sizing: border-box;
+    background-color:#ffffff;
+    overflow:auto;
+}
+.between {
+    display:flex;
+    justify-content:space-between;
+}
+#sub {
+    box-sizing: border-box;
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    top:0;
+    left:0;
+    overflow: auto;
+    padding: 20px 15px;
+    background-color: #646363d8;
+    color:white;
+}
+.heading {
+    border-bottom: 3px solid #e6edf3;
+}
+.heading span::before {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #1186da;
+    content: '';
+}
+.heading span {
+    display: inline-block;
+    position: relative;
+    padding: 0 .4em .2em;
+}
+#sub li {
+    margin:20px 0px;
+    font-size:1.2rem;
+}
+#sub a {
+    color:white;
+    text-decoration:none;
+    font-size:1.2rem;
+    user-select:none;
+}
+#sub li {
+    list-style:none;
+    margin:8px 0px;
+    width:fit-content;
+    user-select:none;
+}
+#sub ul {
+    margin:0;
+}
+
+p {
+    margin:0;
+}
+.team-add {
+    width:50%;
+    box-sizing: border-box;
+    padding:20px;
+    margin:10px;
+    border:3px solid rgb(89, 89, 176);
+    background-color: rgb(89, 89, 176);
+    border-radius:1.2rem;
+    color:white;
+}
+.team-join {
+    width:50%;
+    box-sizing: border-box;
+    padding:20px;
+    margin:10px;
+    border:3px solid rgb(176, 89, 89);
+    background-color: rgb(176, 89, 89);
+    border-radius:1.2rem;
+    color:white;
+}
+.team-title {
+    width:fit-content;
+    margin:0 auto;
+    font-size:1.3rem;
+}
+.between input[type="text"] {
+    width:80%;
+    height:20px;
+    border-radius: 0.3rem;
+    border:1px solid black;
+}
+.between input[type="password"] {
+    width:80%;
+    height:20px;
+    border-radius: 0.3rem;
+    border:1px solid black;
+}
+.between input[type="submit"] {
+    width:20%;
+    height:50px;
+    background-color: white;
+    border:1px solid black;
+    margin-top:20px;
+    border-radius:1rem;
+}
+#team-itiran {
+    font-size:1.5rem;
+}
+.team-view {
+    width:100%;  
+}
+.project-view {
+    box-sizing: border-box;
+    width:60%;
+    height:100px;
+    margin:20px 10px;
+    border-radius:0.5rem;
+    background-color: white;
+    padding:5px;
+    border:5px solid rgb(154, 211, 145);
+}
+.project-select {
+    width:auto;
+    border-bottom:1px solid black;
+}
+.project-select:hover {
+    background-color:#f1f1f1;
+}

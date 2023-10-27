@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <aside id="sub">
+        <div class="doday">
+        </div>
+        <h2 class="heading"><span><a href="/share">共有</a></span></h2>
+        <div class="side_shareRoom">
+            <ul>
+                <% room.forEach((room) => { %>
+                    <li id="<%= room.room %>"><%= room.room %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <h2 class="heading"><span>個人</span></h2>
+        <ul>
+          <li><a href="/task">タスク</a></li>
+          <li><a href="/todo">TODO</a></li>
+          <li><a href="/memo">MEMO</a></li>
+        </ul>
+        <a onclick="logout()">ログアウト</a>
+    </aside>
+
+    <div class="home">
+        <div class="teamTask">
+            <h1 class="Title">チームリスト</h1>
+            <div class="taskList"> 
+                <% count = 0; %>              
+                <% room.forEach((room) => { %>
+                    <div class="list" id="<%= room.room %>">
+                        <p><%= room.room %></p>
+                        <% count ++; %>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+        <div class="mydata">
+            <h1 class="Title">個人用</h1>
+            <div class="dobleT">
+                <div class="todayTodo">
+                    <h2>今日のTODO</h2> 
+                    <% todo.forEach((todo) => { %>
+                        <p><%= todo.contents %></p>
+                    <% }); %>
+                </div>
+                <div class="nearDeadline">
+                    <h2>今週期限のタスク</h2>
+                    <% task.forEach((task) => { %>
+                        <div class="box-dead">
+                            <p><%= task.taskName %></p>
+                            <p><%= moment(task.Deadline).format('YYYY/MM/DD') %></p>
+                        </div>
+                        
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/index.js"></script>
+    
+    
+    
+</body>
+</html>

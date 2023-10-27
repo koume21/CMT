@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メモ</title>
+    <link rel="stylesheet" href="css/memo.css">
+    
+</head>
+<body>
+    <aside id="sub">
+        <div class="doday">
+        </div>
+        <h2 class="heading"><span><a href="/index">ホーム</a></span></h2>
+        <h2 class="heading"><span><a href="/share">共有</a></span></h2>
+        <div class="side_shareRoom">
+            <ul>
+                <% room.forEach((room) => { %>
+                    <li id="<%= room.room %>"><%= room.room %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <h2 class="heading"><span>個人</span></h2>
+        <ul>
+          <li><a href="/task">タスク</a></li>
+          <li><a href="/todo">TODO</a></li>
+          <li><a href="/memo">MEMO</a></li>
+        </ul>
+        <a onclick="logout()">ログアウト</a>
+    </aside>
+    <div class="memo">
+
+        <header>
+            <div class="title">
+                <h1>メモ</h1>
+            </div>
+        </header>
+        <main>
+            <div class="main_flex">
+                <table id="tdl">
+                    <tr>
+                        <th>TITLE</th>
+                    </tr>                    
+                    <% info.forEach((item) => { %>
+                        <% let topic_id = `topic${item.id}`  %>
+                        <% let topic_c_id = `topic_c_${item.id}`  %>
+    
+                        <tr>
+                            <% if (item.title === null) { %>
+                                <td id="<%= topic_id %>" value="<%= item.id %>">
+                                    <div class="select" id="<%= topic_c_id %>" >
+                                        <p>題名なし</p>
+                                    </div>
+                                </td>
+                            <% } else { %>
+                                
+                                <td id="<%= topic_id %>">
+                                    <div class="select" id="<%= topic_c_id %>">
+                                        <p><%= item.title %></p>
+                                    </div>
+                                </td>
+                            <% }; %>
+                        </tr>                   
+                    <% }); %>                   
+                </table>
+                <div class="f_input">
+                    <form action="/memo" method="post">
+                        <div class="subm">
+                            <input type="submit" id="sub_add" name="action" value="追加">
+                            <input type="submit" id="sub_dele" name="action" value="削除">
+                            <input type="submit" id="sub_upd" name="action" value="更新">
+                        </div>
+                        <p>タイトル</p>
+                        <input type="text" id="memo_title" name="topic">
+                        <div class="mamoContents">
+                            <div class="memoConTitle">内容</div>
+                           
+                            <textarea class="memo-input" id="textarea" placeholder="内容" name="memo_content"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <a href="/index">戻る</a>
+    <script src="/js/memo.js"></script>
+</body>
+</html>
+
+<!-- 
+機能
+・全体のメモ表示
+・ラフに入力できるようなデザイン
+デザイン重視 -->

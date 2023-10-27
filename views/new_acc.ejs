@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録</title>
+    <link rel="stylesheet" href="css/new_acc.css">
+</head>
+<body>
+    <div class="main">
+        <div class="log_pla">
+            <h1>新規登録</h1>
+            <% if (error.length > 0) { %>
+                <ul class="ul_style">
+                    <% error.forEach((err) => { %>
+                        <li><%= err %></li>
+                    <% }); %>
+                </ul>
+            <% } %>
+            <div class="user">
+                <form action="/new_acc" method="post">
+                    <div class="user_id place">
+                        <p>ユーザーID</p>
+                        <p class="user_p">(10字以内の英数字)</p>
+                        <input class="input_size" type="text" name="userId">
+                    </div>
+                    <div class="user_name place">
+                        <p>ユーザーネーム</p>
+                        <p class="user_p">(10字以内)</p>
+                        <input class="input_size" type="text" name="userName">
+                    </div>
+                    <div class="user_password place">
+                        <p>パスワード</p>
+                        <input class="input_size" type="password" name="password">
+                    </div>
+                    <div class="user_login">
+                        <input type="submit" value="新規登録">
+                    </div>
+                    <div class="log">
+                        <a href="/login">ログイン</a>
+                    </div>
+                </form>
+            </div>
+        
+        </div>
+    </div>
+    
+    
+</body>
+</html>

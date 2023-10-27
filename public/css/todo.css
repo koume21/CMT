@@ -1,0 +1,279 @@
+@charset "utf-8";
+
+/*全体*/
+html {
+    height:100vh;
+}
+body {
+    min-width:850px;
+    height:100%;
+    margin:0;
+}
+li {
+    list-style:none;
+    margin:8px 0px;
+}
+ul {
+    margin:0;
+}
+#sub {
+    box-sizing: border-box;
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    top:0;
+    left:0;
+    overflow: auto;
+    padding: 20px 15px;
+    background-color: #646363d8;
+    color:white;
+}
+.heading {
+    border-bottom: 3px solid #e6edf3;
+}
+.heading span::before {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #1186da;
+    content: '';
+}
+.heading span {
+    display: inline-block;
+    position: relative;
+    padding: 0 .4em .2em;
+}
+#sub li {
+    margin:20px 0px;
+    font-size:1.2rem;
+}
+#sub a {
+    color:white;
+    text-decoration:none;
+    font-size:1.2rem;
+    user-select:none;
+}
+#sub li {
+    list-style:none;
+    margin:8px 0px;
+    width:fit-content;
+    user-select:none;
+}
+#sub ul {
+    margin:0;
+}
+.main {
+    width:85%;
+    height:100%;
+    
+    margin-left:15%;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    height:93%;
+    min-width:50%;
+    margin-left:40px;
+    margin-top:4%;
+    color: #666;
+}
+.flex {
+    display:flex;
+    height:100%;
+}
+#head_draw {
+    text-align: center;
+    font-size: 26px;
+    height:fit-content;
+    margin:0;
+    margin:auto 0;
+}
+.main_claender {
+    height:100%;
+    
+    box-sizing:border-box;
+}
+table a {
+    font-size:1.2em;
+    display:inline-block;
+    width:2.6em;
+    height:2.6em;
+    line-height:2.6em;
+    text-decoration:none;
+    color: #666;
+    cursor:pointer;
+}
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
+    height:80%;
+    box-sizing:border-box;
+    margin-top:30px;
+}
+
+/*テーブルのデザイン*/
+table {
+    outline: 2px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+    height:100%;
+}
+
+th, td {
+    outline: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+th {
+    color:white;
+    height:5%;
+    background-color:rgb(117, 115, 115);
+}
+th:first-child {
+    background-color:rgb(245, 74, 74);
+}
+th:last-child {
+    background-color:rgb(94, 94, 247);
+}
+
+
+/*日曜日*/
+td:first-child a {
+    color: red;
+}
+/*土曜日*/
+td:last-child a {
+    color: blue;
+}
+/*前後月の日付*/
+td.disabled {
+    color: #ccc;
+}
+/*本日*/
+td.today a{
+    background-color: #D65E72;
+    border-radius:40px;
+    color: #fff;
+}
+#calendar a:hover {
+    background-color:rgba(5, 5, 5, 0.432);
+    color:white;
+    border-radius:40px;
+}
+
+/*ボタン*/
+#next-prev-button {  
+    height:6.5%;  
+    display:flex;
+    background: rgb(94, 173, 247);
+    cursor: pointer;  
+    color: black;
+    border: 1px solid rgb(94, 173, 247);
+    justify-content:space-between;
+    padding:5px 15px;
+    margin:10px;
+    border-radius:1.4rem;
+}
+#prev,#next {
+    height:fit-content;
+    width:fit-content;
+    margin:auto 0px;
+    background-color: transparent;
+}
+#next-prev-button button{
+    font-size: 1.5rem;
+    border:none;
+    height:fit-content;
+}
+/* #next-prev-button button:hover{
+    background-color:white;
+    border-color: #92c5d4;
+} */
+.input_place {
+    width:50%;
+    height:93%;
+    margin-top:4%;
+}
+.select_place {
+    width:100%;
+    height:100%;
+    padding:0 10px;
+    box-sizing:border-box;
+    
+    overflow:auto;
+}
+.selectDay {
+    height:6.5%;  
+    display:flex;
+    background: rgb(94, 173, 247);
+    cursor: pointer;  
+    color: black;
+    border: 1px solid rgb(94, 173, 247);
+    justify-content:space-between;
+    padding:5px 15px;
+    margin:10px;
+    border-radius:1.4rem;
+}
+.selectDay h2 {
+    text-align: center;
+    font-size: 1.5rem;;
+    height:fit-content;
+    margin:0;
+    margin:auto 0;
+}
+
+.input_place input {
+    margin:10px 15px;
+}
+.input_todo {
+    display:flex;
+}
+#todoValue {
+    margin:0;
+}
+#todoAdd {
+    margin:0 20px;
+    padding:10px 20px;
+    border:1px solid black;
+    border-radius:1.4rem;
+}
+#todoAdd:hover {
+    background-color:#666;
+    color:white;
+
+}
+#save {
+    margin:0;
+    padding:10px 20px;
+    border:1px solid black;
+    border-radius:1.4rem;
+}
+#save:hover {
+    background-color:#666;
+    color:white;
+}
+.List {
+    height:auto;
+    margin-top:15px;
+    background-color: #f2f2f2;
+}
+.List h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #2589d0;
+    color: #fff;
+    font-weight: 600;   
+}
+.TodoList {
+    list-style-type: disc;
+    margin: 0;
+    padding: 1em 1em 1em 2.5em;
+    overflow:auto;
+}

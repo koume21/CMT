@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チーム</title>
+    <link rel="stylesheet" href="/css/room.css">
+</head>
+<body>
+    <aside id="sub">
+        <div class="doday">
+        </div>
+        <h2 class="heading"><span><a href="/index">ホーム</a></span></h2>
+        <h2 class="heading"><span><a href="/share">共有</a></span></h2>
+        <div class="side_shareRoom">
+            <ul>
+                <% rooms.forEach((room) => { %>
+                    <li id="<%= room.room %>"><%= room.room %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <h2 class="heading"><span>個人</span></h2>
+        <ul>
+          <li><a href="/task">タスク</a></li>
+          <li><a href="/todo">TODO</a></li>
+          <li><a href="/memo">MEMO</a></li>
+        </ul>
+        <a onclick="logout()">ログアウト</a>
+    </aside>
+    <div class="task">
+        <div class="header">
+            <div class="header-flex">
+                <div class="root center">
+                    <a href="/index"><p>ホーム</p></a>
+                    ＞＞
+                    <p>タスク管理</p>
+                </div>
+               
+            </div>
+        </div>
+        <div class="between">
+    
+            <div class="main">
+                <div class="task-title">
+                    <h1>タスク管理</h1>
+                </div>
+                <div class="input_flex">
+                    <div class="add input_button">
+                        <input type="submit"  id="open" value="追加">
+                    </div>
+                </div>
+        
+                <!-- モーダルウィンドウ -->
+                <div id="modal">
+                    <div class="modal-window">
+                        <div class="close-right">
+        
+                            <button id="closer">×</button>
+                        </div>
+                        <form action="/share_add" method="post">
+                            <div class="moda-center">
+                                <div class="task_Name">
+                                    <p>タスク名</p>
+                                    <input type="text" name="task">
+                                </div>
+                                <div class="modal-mid">
+                                    <div class="deadline">
+                                        <p>期限</p>
+                                        <label>
+                                            <input type="date" name="deadline">
+                                        </label>
+                                        
+                                    </div>
+                                    <div class="modal-priority">
+                                        <p>優先度</p>
+                                        <div class="select-css">
+                                            <select name="priority">
+                                                <option value=1>低</option>
+                                                <option value=2>中</option>
+                                                <option value=3>高</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-mid">
+                                    <div class="modal-status">
+                                        <p>ステータス</p>
+                                        <div class="select-css">
+                                            <select name="status">
+                                                <option value=1>進行中</option>
+                                                <option value=2>停止中</option>
+                                                <option value=3>完了</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-manager">
+                                        <p>担当者</p>
+                                        <input type="text" name="manager">
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                            <input id="moda-submit" type="submit" value="追加">
+                        </form>
+                        
+                    </div>
+                </div>
+        
+        
+                <div class="task_list">
+                    <table class="no-spacing">
+                        <div class="design-line">
+                            <tr>
+                                <th>タスク名</th>
+                                <th>期限</th>
+                                <!-- <th>残日数</th> -->
+                                <th>優先度</th>
+                                <th>ステータス</th>
+                                <th>担当者</th>
+                            </tr>
+                        </div>
+                        <% items.forEach((item) => { %>
+                            
+                            <tr>
+                                <td id="<%= item.taskNumber %>" ondblclick="taskClick(this.id)"><p><%= item.taskName %></p></td>
+                                <td><%= moment(item.Deadline).format('YYYY/MM/DD') %></td>
+                                <!-- <td></td> -->
+                                <% if(item.priority === 1) { %>
+                                    <td id="low">低</td>
+                                <% } else if(item.priority === 2) { %>
+                                    <td id="mid">中</td>
+                                <% } else if(item.priority === 3) { %>
+                                    <td id="high">高</td>
+                                <% } else { %>
+                                    <td></td>
+                                <% } %>
+                                <% if(item.status === 1) { %>
+                                    <td id="now">進行中</td>
+                                <% } else if(item.status === 2) { %>
+                                    <td id="stop">停止中</td>
+                                <% } else if(item.status === 3) { %>
+                                    <td id="comp">完了</td>
+                                <% } else { %>
+                                    <td></td>
+                                <% } %>
+                                <td><%= item.manager %></td>
+                            </tr>
+                            
+                        <% }); %>
+                    </table>
+                </div>
+                
+            </div>
+            <div class="taskDetail">
+                <div class="detail_h1">
+                    <h1>タスク詳細</h1>
+                </div>
+                <div class="main_detail">
+                    <form action="/room_up" method="post">
+                        <div class="detail_taskName">
+                            <p>タスク名</p>
+                            <input type="text" name="detail_name" id="detailName">
+                        </div>
+                        <div class="detail_deadline">
+                            <p>期限</p>
+                            <label>
+                                <input type="date" name="detail_deadline" id="detailDeadline">
+                            </label>
+                        </div>
+                        <div class="detail_priority">
+                            <p>優先度</p>
+                            <div class="detail-select">
+                                <select name="detail_priority" id="detailPriority">
+                                    <option value=1>低</option>
+                                    <option value=2>中</option>
+                                    <option value=3>高</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="detail_status">
+                            <p>ステータス</p>
+                            <div class="detail-select">
+                                <select name="detail_status" id="detailStatus">
+                                    <option value=1>進行中</option>
+                                    <option value=2>停止中</option>
+                                    <option value=3>完了</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="detail_manager">
+                            <p>担当者</p>
+                            <input type="text" name="detailManager" id="detail_manager">
+                        </div>
+                        <div class="update">
+                            <div class="action_add">
+                                <input type="submit" name="action" value="更新">
+                            </div>
+                            <div class="action_drop">
+                                <input type="submit" name="action" value="削除">
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    
+    </div>
+    <script src="/js/room.js"></script>
+</body>
+</html>
+
